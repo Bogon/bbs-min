@@ -2,7 +2,7 @@
 该项目使用Golang进行构建，具体参见：https://mlog.club
 
 
-## 部署
+## [部署](https://www.liwenzhou.com/posts/Go/deploy/)
 
 ### supervisor 守护进程的方式部署
 安装 supervisor
