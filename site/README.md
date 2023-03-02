@@ -4,6 +4,25 @@
 
 该项目使用nuxt.js进行构建，利用服务端渲染技术构建 https://mlog.club 前端界面。
 
+## 部署
+### 打包
+```bash
+npm run build
+```
+
+### 安装 守护进程 pm2 全局安装
+```bash
+npm install -g pm2
+```
+
+### 启动守护进程
+```bash
+pm2 start /node_modules/nuxt/bin/nuxt.js --name 项目名称             (项目目录的node_modules包)
+```
+> 注意：xxx是项目名称，即package.json中的name
+
+> https://www.jianshu.com/p/bbe874c32f90
+
 ## Build Setup
 
 ```bash
