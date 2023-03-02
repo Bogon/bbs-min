@@ -1,5 +1,9 @@
 # admin
 
+## 部署
+nginx 部署
+> https://segmentfault.com/a/1190000021530126
+
 ## Project setup
 ```
 yarn install
