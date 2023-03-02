@@ -1,6 +1,50 @@
 ## 介绍
 该项目使用Golang进行构建，具体参见：https://mlog.club
 
+
+## 部署
+
+### supervisor 守护进程的方式部署
+安装 supervisor
+```bash
+sudo apt install supervisor
+```
+启动supervisor服务:
+```bash
+sudo supervisord -c /etc/supervisord.conf
+```
+编辑配置文件：
+```yaml
+[program:bbs-go-site]  ;程序名称
+user=root  ;执行程序的用户
+command=/home/senyas/go/bbs-min/server/bbs-go  ;执行的命令
+directory=/home/senyas/go/bbs-min/ ;命令执行的目录
+stopsignal=TERM  ;重启时发送的信号
+autostart=true  
+autorestart=true  ;是否自动重启
+stdout_logfile=/var/log/bbs-go-stdout.log  ;标准输出日志位置
+stderr_logfile=/var/log/bbs-go-stderr.log  ;标准错误日志位置
+```
+
+重启supervisor服务:
+````bash 
+sudo supervisorctl update # 更新配置文件并重启相关的程序
+````
+
+查看的运行状态：
+```bash 
+sudo supervisorctl status bbs-go-site
+```
+
+supervisr管理命令：
+```bash 
+supervisorctl status       # 查看所有任务状态
+supervisorctl shutdown     # 关闭所有任务
+supervisorctl start 程序名  # 启动任务
+supervisorctl stop 程序名   # 关闭任务
+supervisorctl reload       # 重启supervisor
+```
+
 > ⚠️注意⚠️\
 一、Sql脚本会初始化默认管理员用户，用户名：admin，密码：123456 \
 二、该Sql脚本只会创建启动时必须的表，bbs-go系统使用的其他表会在系统正确启动后自动创建；
